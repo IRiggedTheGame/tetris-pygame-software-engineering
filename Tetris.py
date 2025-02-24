@@ -235,7 +235,7 @@ def draw_text_middle(text, size, color, surface):
 
 # draws the lines of the grid for the game
 def draw_grid(surface):
-    r = g = b = 0
+    r = g = b = 25
     grid_color = (r, g, b)
 
     for i in range(row):
@@ -427,6 +427,7 @@ def main(window):
 
                 elif event.key == pygame.K_DOWN: #i wonder if i can alter this so it continually goes down...
                     # move shape down
+                    pygame.key.set_repeat(250) #added this in so it continuously goes down :)
                     current_piece.y += 1
                     if not valid_space(current_piece, grid):
                         current_piece.y -= 1
