@@ -453,7 +453,17 @@ def main(window):
             current_piece = next_piece
             next_piece = get_shape()
             change_piece = False
-            score += clear_rows(grid, locked_positions) * 10    # increment score by 10 for every row cleared
+            lines_cleared = clear_rows(grid, locked_positions)
+            if lines_cleared == 1: #adds to score depending on how many lines were cleared
+                score += 40
+            elif lines_cleared == 2: #as a side note, its weird that tetris uses this for scoring.
+                score += 100 #no common factor here :(
+            elif lines_cleared == 3:
+                score += 300
+            elif lines_cleared == 4:
+                score += 1200
+            #score += clear_rows(grid, locked_positions) * 10    # increment score by 10 for every row cleared
+            #line 465 is the original code. lines 456 -> 464 are my edits!
             update_score(score)
 
             if last_score < score:
